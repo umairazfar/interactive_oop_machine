@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>The Interactive Machine Builder</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.5.2/css/all.min.css">
+</head>
+<body>
+    <div id="app-container">
+        <header>
+            <h1><i class="fas fa-cogs"></i> The Interactive Machine Builder</h1>
+            <p>An OOP Learning Tool</p>
+        </header>
+
+        <div id="main-content">
+            <div id="toolbox">
+                <h2><i class="fas fa-toolbox"></i> Components</h2>
+                <div class="component-draggable" draggable="true" data-type="Button">
+                    <i class="fas fa-mouse-pointer"></i> Button
+                </div>
+                <div class="component-draggable" draggable="true" data-type="Lightbulb">
+                    <i class="far fa-lightbulb"></i> Lightbulb
+                </div>
+                <div class="component-draggable" draggable="true" data-type="Switch">
+                    <i class="fas fa-toggle-on"></i> Switch
+                </div>
+                <div class="component-draggable" draggable="true" data-type="Speaker">
+                    <i class="fas fa-volume-up"></i> Speaker
+                </div>
+                 <div class="component-draggable" draggable="true" data-type="RgbLight">
+                    <i class="fas fa-lightbulb" style="color: #9D5BFF;"></i> RGB Light
+                </div>
+                <div class="instructions">
+                    <h3>Instructions</h3>
+                    <ol>
+                        <li>Drag components onto the canvas.</li>
+                        <li>Drag a wire from one <span class="circle-ref"></span> to another.</li>
+                        <li>Configure the connection.</li>
+                        <li>Click "Run Machine" to test.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <div id="canvas-container">
+                <div id="canvas-controls">
+                     <button id="run-button"><i class="fas fa-play"></i> Run Machine</button>
+                     <button id="stop-button" class="disabled"><i class="fas fa-stop"></i> Stop Machine</button>
+                     <button id="clear-button"><i class="fas fa-trash"></i> Clear Canvas</button>
+                </div>
+                <div id="canvas">
+                    <!-- The SVG for connections now lives inside the canvas div -->
+                    <svg id="connections-svg" width="100%" height="100%"></svg>
+                    <!-- Components will be added here by JavaScript -->
+                </div>
+            </div>
+
+        </div>
+    </div>
+
+    <!-- Wiring Modal (Initially Hidden) -->
+    <div id="wiring-modal-overlay" class="hidden">
+        <div id="wiring-modal-content">
+            <h2><i class="fas fa-link"></i> Configure Connection</h2>
+            <div class="wiring-info">
+                <span>From: <strong id="source-component-info"></strong></span>
+                <i class="fas fa-arrow-right"></i>
+                <span>To: <strong id="target-component-info"></strong></span>
+            </div>
+            <div class="wiring-section">
+                <label for="event-select">When this event happens on the source...</label>
+                <select id="event-select"></select>
+
+                <label for="method-select">...call this method on the target:</label>
+                <select id="method-select"></select>
+
+                <div class="modal-buttons">
+                    <button id="connect-button">Create Wire</button>
+                    <button id="cancel-button">Cancel</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
